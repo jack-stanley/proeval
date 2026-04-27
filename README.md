@@ -1,13 +1,11 @@
 # ProEval
 
-**Active Evaluation with Bayesian Quadrature** — estimate LLM accuracy using far fewer labeled samples than random sampling.
+ProEval: Proactive failure discovery and efficient performance estimation for GenAI evaluation.
 
-## Introduction
-
-1. 💰 **Cut GenAI eval costs 8–80×** — achieve ±1% accuracy with a fraction of the labeled samples
-2. 🔍 **Discover more failure cases** — proactively surface diverse bugs under strict evaluation budgets
-3. 🧠 **Transfer learning across benchmarks** — pre-trained Gaussian Process surrogates generalize to new models instantly
-4. 🚀 **Bayesian Quadrature + superlevel set sampling** — smart input selection instead of brute-force random sampling
+1. 💰 **Cut GenAI eval costs 8–100×** — achieve ±1% accuracy with a fraction of the samples
+2. 🔍 **Discover failure cases** — proactively surface diverse bugs under strict evaluation budgets
+3. 🧠 **Transfer learning over benchmarks** — pre-trained Gaussian Process surrogates generalize to new models instantly
+4. 🧩 **Easy Integration** - Easily to integrate into the GenAI evaluation systems with multiple modalities
 5. ✅ **Validated on reasoning, safety & classification** — GSM8K, MMLU, StrategyQA, Jigsaw, and more
 
 ## Installation
