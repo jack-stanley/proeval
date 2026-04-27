@@ -1,6 +1,6 @@
 # ProEval
 
-ProEval: Proactive failure discovery and efficient performance estimation for GenAI evaluation.
+Proactive failure discovery and efficient performance estimation for GenAI evaluation.
 
 1. 💰 **Cut GenAI eval costs 8–100×** — achieve ±1% accuracy with a fraction of the samples
 2. 🔍 **Discover failure cases** — proactively surface diverse bugs under strict evaluation budgets
