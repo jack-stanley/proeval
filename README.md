@@ -37,8 +37,8 @@ response, prediction, score = predictor.evaluate(
 Here is an example of how to run the experiments:
 
 ```shell
-# BQ sampling with learned prior (Case 1)
-python -m experiment.exp_sampling_w_prior_case_1 --dataset svamp --n-runs 5
+# BQ performance estimation (runs BQ-SF, BQ-RPF, etc.)
+python -m experiment.exp_performance_estimation --dataset svamp --n-runs 5
 ```
 
 ## License

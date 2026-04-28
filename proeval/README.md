@@ -131,7 +131,7 @@ print(f"Improvement:   {(1 - result.mae(true_mean) / random_mae) * 100:.1f}%")
 
 ---
 
-## 1b. BQEncoderSampler — Active Sampling with Neural Encoder (Case 2)
+## 1b. BQEncoderSampler — Active Sampling with Neural Encoder (BQ-TPF)
 
 Uses a pre-trained neural encoder's φ embeddings and kernel for GP posterior updates instead of the linear prior.
 
@@ -199,7 +199,7 @@ Generate hard, diverse test cases guided by BQ posterior and topic structure. Th
 
 The generator supports two prior modes:
 
-**Case 1: Learned prior** (from other models' predictions)
+**BQ-SF: Learned prior** (from other models' predictions)
 
 ```python
 from proeval.generator import TopicAwareGenerator
@@ -223,7 +223,7 @@ gen = TopicAwareGenerator(
 )
 ```
 
-**Case 2: Encoder prior** (from trained neural encoder)
+**BQ-TPF: Encoder prior** (from trained neural encoder)
 
 ```python
 gen = TopicAwareGenerator(
@@ -241,11 +241,11 @@ gen = TopicAwareGenerator(
 | `df`              | `DataFrame`     | _required_                        | Dataset DataFrame with `question`, `ground_truth` columns          |
 | `dataset`         | `str`           | `"gsm8k"`                        | Dataset name (determines prompt format)                            |
 | `n_topics`        | `int`           | `11`                              | Number of topics for BERTopic (runs internally)                    |
-| `prior_u`         | `np.ndarray`    | `None`                            | Prior mean from pretrain models (Case 1)                           |
-| `prior_S`         | `np.ndarray`    | `None`                            | Prior covariance (Case 1)                                          |
-| `noise_variance`  | `float`         | `0.3`                             | GP noise variance (Case 1)                                        |
-| `encoder_path`    | `str`           | `None`                            | Path to encoder `.pth` (Case 2)                                   |
-| `embeddings_path` | `str`           | `None`                            | Path to embeddings `.npy` (Case 2)                                |
+| `prior_u`         | `np.ndarray`    | `None`                            | Prior mean from pretrain models (BQ-SF)                            |
+| `prior_S`         | `np.ndarray`    | `None`                            | Prior covariance (BQ-SF)                                           |
+| `noise_variance`  | `float`         | `0.3`                             | GP noise variance (BQ-SF)                                         |
+| `encoder_path`    | `str`           | `None`                            | Path to encoder `.pth` (BQ-TPF)                                    |
+| `embeddings_path` | `str`           | `None`                            | Path to embeddings `.npy` (BQ-TPF)                                 |
 | `model`           | `str`           | `"google/gemini-3-flash-preview"` | LLM for test case generation                                      |
 | `ss_threshold`    | `float`         | `0.0`                             | SS acquisition threshold λ                                        |
 | `ss_beta`         | `float`         | `1.96`                            | UCB exploration parameter β                                       |
@@ -365,7 +365,7 @@ results = predictor.predict_batch_parallel(
 
 ### UnifiedCSVManager — Multi-Model CSV with Resume & Fix-Error
 
-The `UnifiedCSVManager` manages multi-model prediction CSVs with **checkpoint-based resume** and **fix-error mode** — the same features from the original `eval/model.py`.
+The `UnifiedCSVManager` manages multi-model prediction CSVs with **checkpoint-based resume** and **fix-error mode**.
 
 #### Full Evaluation with Resume
 
@@ -546,11 +546,9 @@ All experiment scripts live in `experiment/` and are run as Python modules:
 
 | Script                               | Description                            |
 | ------------------------------------ | -------------------------------------- |
-| `exp_sampling_w_prior_case_1`        | BQ active sampling with learned prior  |
-| `exp_sampling_w_embedding_case_2`    | BQ sampling with neural encoder prior  |
-| `exp_generation_w_prior_case_1`      | Test case generation with learned prior |
-| `exp_generation_w_embedding_case_2`  | Test case generation with encoder prior |
-| `exp_train_encoder`                  | Train a neural encoder (Setting 1)     |
+| `exp_performance_estimation`          | Unified performance estimation (all methods) |
+| `exp_failure_discovery`               | Active failure discovery experiments  |
+| `exp_train_encoder`                  | Train a neural encoder for TPF         |
 
 Example:
 
@@ -559,8 +557,8 @@ Example:
 python -m experiment.exp_train_encoder \
     --train-benchmarks gsm8k strategyqa --holdout-benchmark svamp --epochs 200
 
-# Sampling with encoder
-python -m experiment.exp_sampling_w_embedding_case_2 \
+# Performance estimation with encoder
+python -m experiment.exp_performance_estimation \
     --dataset svamp --encoder-path path/to/encoder.pth --n-runs 5
 ```
 
