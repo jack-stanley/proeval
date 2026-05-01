@@ -26,7 +26,7 @@ Baselines:
 import random
 from typing import Dict, List
 
-from proeval.generator.core import TopicAwareGenerator
+from src.proeval.generator.core import TopicAwareGenerator
 
 
 def random_generation(

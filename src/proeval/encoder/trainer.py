@@ -51,12 +51,12 @@ import numpy as np
 import torch
 import torch.optim as optim
 
-from proeval.encoder.data import (
+from src.proeval.encoder.data import (
     get_model_index_by_name,
     load_all_benchmarks,
     split_train_and_target,
 )
-from proeval.encoder.nn_utils import (
+from src.proeval.encoder.nn_utils import (
     QuestionEncoder,
     compute_gp_loss,
     save_encoder,

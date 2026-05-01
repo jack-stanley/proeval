@@ -22,19 +22,19 @@ Public API::
     result = sampler.sample(predictions="svamp", target_model=0, budget=20)
 """
 
-from proeval.sampler.bq import (
+from src.proeval.sampler.bq import (
     BQEncoderSampler,
     BQPriorSampler,
     BQSampler,
     SamplingResult,
 )
-from proeval.sampler.data import (
+from src.proeval.sampler.data import (
     extract_model_predictions,
     load_embeddings,
     load_predictions,
     setup_train_test_split,
 )
-from proeval.encoder import (
+from src.proeval.encoder import (
     QuestionEncoder,
     compute_gp_loss,
     compute_gp_loss_with_reg,
@@ -44,7 +44,7 @@ from proeval.encoder import (
     load_encoder,
     save_encoder,
 )
-from proeval.sampler.pretrain_selector import (
+from src.proeval.sampler.pretrain_selector import (
     get_reference_benchmarks,
     select_pretrain_models_gmm,
 )

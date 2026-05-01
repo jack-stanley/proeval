@@ -61,7 +61,7 @@ from typing import List, Optional, Tuple, Union
 import numpy as np
 import pandas as pd
 
-from proeval.sampler.data import (
+from src.proeval.sampler.data import (
     extract_model_predictions,
     load_predictions,
     setup_train_test_split,
@@ -742,7 +742,7 @@ class BQPriorSampler:
                     "pretrain_mode='gmm' requires a dataset name string "
                     "for 'predictions', not a DataFrame."
                 )
-            from proeval.sampler.pretrain_selector import select_pretrain_models_gmm
+            from src.proeval.sampler.pretrain_selector import select_pretrain_models_gmm
 
             target_name = (
                 target_model
@@ -802,8 +802,8 @@ def _bq_encoder_sampling(
     estimates.
     """
     import torch
-    from proeval.encoder import compute_kernel_matrix
-    from proeval.generator.core import get_posterior_embedding
+    from src.proeval.encoder import compute_kernel_matrix
+    from src.proeval.generator.core import get_posterior_embedding
 
     if device is None:
         device = next(encoder.parameters()).device
@@ -997,7 +997,7 @@ class BQEncoderSampler:
         self.n_init = n_init
 
         # Load encoder and compute prior
-        from proeval.generator.core import setup_encoder_prior
+        from src.proeval.generator.core import setup_encoder_prior
 
         encoder, phi_emb, u, S, var = setup_encoder_prior(
             encoder_path, embeddings_path,
@@ -1083,8 +1083,8 @@ def _bq_encoder_random_sampling(
     :func:`_bq_encoder_sampling`.
     """
     import torch
-    from proeval.encoder import compute_kernel_matrix
-    from proeval.generator.core import get_posterior_embedding
+    from src.proeval.encoder import compute_kernel_matrix
+    from src.proeval.generator.core import get_posterior_embedding
 
     if device is None:
         device = next(encoder.parameters()).device

@@ -20,15 +20,15 @@ Public API::
     from proeval.evaluator import UnifiedCSVManager, load_dataset_data
 """
 
-from proeval.evaluator.client import MODEL_MAPPING, OpenRouterClient, resolve_model_name
-from proeval.evaluator.csv_manager import (
+from src.proeval.evaluator.client import MODEL_MAPPING, OpenRouterClient, resolve_model_name
+from src.proeval.evaluator.csv_manager import (
     UnifiedCSVManager,
     convert_numpy_types,
     load_dataset_data,
     load_predictions_from_csv,
     save_predictions_to_csv,
 )
-from proeval.evaluator.predictor import (
+from src.proeval.evaluator.predictor import (
     DATASET_CONFIGS,
     DatasetConfig,
     LLMPredictor,

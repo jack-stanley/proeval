@@ -64,8 +64,8 @@ from typing import Dict, List, Optional, Tuple
 import numpy as np
 import pandas as pd
 
-from proeval.evaluator.client import OpenRouterClient
-from proeval.generator.prompt import (
+from src.proeval.evaluator.client import OpenRouterClient
+from src.proeval.generator.prompt import (
     GSM8K_SCHEMA,
     STRATEGYQA_SCHEMA,
     build_gsm8k_prompt,
@@ -183,7 +183,7 @@ def select_hard_problems_bq(
 
     Returns ``(hard_indices, posterior_mean, posterior_var)``.
     """
-    from proeval.sampler.bq import _get_posterior
+    from src.proeval.sampler.bq import _get_posterior
 
     n_samples = test_x.shape[1]
     labeled: List[int] = []
@@ -270,7 +270,7 @@ def setup_encoder_prior(
         var: Learned noise variance from encoder.
     """
     import torch
-    from proeval.encoder import compute_kernel_matrix, get_phi_embeddings, load_encoder
+    from src.proeval.encoder import compute_kernel_matrix, get_phi_embeddings, load_encoder
 
     if device is None:
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -334,7 +334,7 @@ def get_posterior_embedding(
         s_t: Posterior variance ``(n_samples,)`` or covariance matrix.
     """
     import torch
-    from proeval.encoder import compute_kernel_matrix
+    from src.proeval.encoder import compute_kernel_matrix
 
     if device is None:
         device = next(encoder.parameters()).device
@@ -676,7 +676,7 @@ class TopicAwareGenerator:
                 )
         elif self.prior_mode == "rpf":
             # RPF: Matérn kernel with raw text embeddings
-            from proeval.sampler.bq import _get_posterior_matern
+            from src.proeval.sampler.bq import _get_posterior_matern
 
             if self.labeled_indices:
                 self.u_t, self.s_t = _get_posterior_matern(
@@ -689,7 +689,7 @@ class TopicAwareGenerator:
                 )
         else:
             # Without pretrain: learned prior posterior (SF)
-            from proeval.sampler.bq import _get_posterior
+            from src.proeval.sampler.bq import _get_posterior
 
             if self.labeled_indices and self._prior_S is not None:
                 # Build test_x from prior_S columns

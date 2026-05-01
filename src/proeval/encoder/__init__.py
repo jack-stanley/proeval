@@ -24,7 +24,7 @@ Public API::
     from proeval.encoder import EncoderTrainer
 """
 
-from proeval.encoder.nn_utils import (
+from src.proeval.encoder.nn_utils import (
     QuestionEncoder,
     compute_gp_loss,
     compute_gp_loss_with_reg,
@@ -35,7 +35,7 @@ from proeval.encoder.nn_utils import (
     load_encoder,
     save_encoder,
 )
-from proeval.encoder.trainer import EncoderTrainer
+from src.proeval.encoder.trainer import EncoderTrainer
 
 __all__ = [
     "QuestionEncoder",

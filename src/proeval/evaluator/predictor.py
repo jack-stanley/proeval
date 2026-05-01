@@ -29,7 +29,7 @@ from typing import Any, Callable, Dict, List, Optional, Tuple
 
 from tqdm import tqdm
 
-from proeval.evaluator.client import OpenRouterClient
+from src.proeval.evaluator.client import OpenRouterClient
 
 
 # Prompt templates
