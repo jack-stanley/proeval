@@ -38,9 +38,9 @@ Quick start::
 
 __version__ = "0.1.0"
 
-from src.proeval.evaluator import DATASET_CONFIGS, DatasetConfig, LLMPredictor, OpenRouterClient
-from src.proeval.generator import TopicAwareGenerator
-from src.proeval.sampler import BQPriorSampler, BQSampler, SamplingResult
+from proeval.evaluator import DATASET_CONFIGS, DatasetConfig, LLMPredictor, OpenRouterClient
+from proeval.generator import TopicAwareGenerator
+from proeval.sampler import BQPriorSampler, BQSampler, SamplingResult
 
 __all__ = [
     "BQPriorSampler",

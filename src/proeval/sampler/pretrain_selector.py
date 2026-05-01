@@ -38,7 +38,7 @@ import numpy as np
 import pandas as pd
 from sklearn.mixture import GaussianMixture
 
-from src.proeval.sampler.data import _default_data_dir
+from proeval.sampler.data import _default_data_dir
 
 
 # Reference benchmark discovery

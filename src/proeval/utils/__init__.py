@@ -21,7 +21,7 @@ Public API::
     from proeval.utils import MODEL_NAME_MAP
 """
 
-from src.proeval.utils.metrics import (
+from proeval.utils.metrics import (
     compute_all_metrics,
     compute_samples_to_threshold,
     embedding_coverage,
@@ -32,7 +32,7 @@ from src.proeval.utils.metrics import (
     topic_entropy,
 )
 
-from src.proeval.utils.model_names import MODEL_NAME_MAP
+from proeval.utils.model_names import MODEL_NAME_MAP
 
 __all__ = [
     "topic_entropy",

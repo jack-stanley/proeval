@@ -21,11 +21,11 @@ Public API::
     from proeval.generator import setup_encoder_prior, get_posterior_embedding
 """
 
-from src.proeval.generator.baselines import (
+from proeval.generator.baselines import (
     random_generation,
     random_topic_generation,
 )
-from src.proeval.generator.core import (
+from proeval.generator.core import (
     TopicAwareGenerator,
     extract_topics_bertopic,
     get_posterior_embedding,
